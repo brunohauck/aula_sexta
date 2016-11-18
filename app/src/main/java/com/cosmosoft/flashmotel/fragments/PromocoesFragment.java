@@ -22,30 +22,28 @@ import com.cosmosoft.flashmotel.util.Util;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class PromocoesFragment extends Fragment {
 
 
-    public HomeFragment() {
+    public PromocoesFragment() {
         // Required empty public constructor
     }
-
     private View rootView;
     WebView web;
     private View mProgressView;
     private View mWebView;
     private Context ctx;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
         web = (WebView) rootView.findViewById(R.id.webview01);
         mWebView = rootView.findViewById(R.id.web_view_linear);
         mProgressView = rootView.findViewById(R.id.login_progress);
-        web.setWebViewClient(new myWebClient());
+        web.setWebViewClient(new PromocoesFragment.myWebClient());
         showProgress(true);
         web.getSettings().setJavaScriptEnabled(true);
         ctx = getActivity();
@@ -57,7 +55,7 @@ public class HomeFragment extends Fragment {
             //String url ="file:///android_asset/teste.html";
 
             //HTML 5 carregado da internet
-            String url = "http://cosmosoft.com.br/flashmotel/public/";
+            String url = "http://cosmosoft.com.br/flashmotel/public/desconto/consultar";
 
             //Log para mostrar no logcat do Android Studio a url
             Log.i("URL ->",url);
@@ -70,9 +68,7 @@ public class HomeFragment extends Fragment {
             web.loadUrl(url);
         }
         return rootView;
-
     }
-
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
@@ -135,5 +131,6 @@ public class HomeFragment extends Fragment {
             view.loadUrl("file:///android_asset/sem_conexao.html");
         }
     }
+
 
 }
